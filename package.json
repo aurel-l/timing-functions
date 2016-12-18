@@ -1,0 +1,62 @@
+{
+  "name": "timing-functions",
+  "version": "0.0.1",
+  "description": "Set of universal utility functions around timing and scheduling in JavaScript",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "modules": "src/index.js",
+  "jsnext:main": "src/index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "test:unit": "echo \"no unit test yet\"",
+    "test:lint": "eslint  --ignore-path .gitignore \"./**/*.js\"",
+    "test:flow": "flow",
+    "test": "npm-run-all test:*",
+    "bundle": "rollup -c",
+    "build": "npm-run-all clean bundle",
+    "prepublish": "npm-run-all test clean \"bundle -- --environment NODE_ENV:production\""
+  },
+  "keywords": [
+    "timing",
+    "setTimeout",
+    "setImmediate",
+    "requestAnimationFrame",
+    "requestIdleCallback",
+    "rAF",
+    "rIC",
+    "JavaScript",
+    "node",
+    "browser",
+    "worker",
+    "JS",
+    "utility",
+    "function",
+    "sleep",
+    "schedule",
+    "timeout",
+    "scheduler",
+    "await",
+    "async",
+    "Promise"
+  ],
+  "author": "Aurélien Luciani <luciani@ebi.ac.uk> (https://github.com/aurel-l)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-babili": "0.0.9",
+    "eslint": "^3.12.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-import-resolver-node": "^0.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "flow-bin": "^0.37.0",
+    "npm-run-all": "^3.1.2",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.37.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-includepaths": "^0.2.1"
+  }
+}
