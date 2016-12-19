@@ -15,6 +15,7 @@ export default {
       env: {
         production: {
           presets: ['babili'],
+          comments: false,
         },
       },
     }),
