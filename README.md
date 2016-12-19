@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/aurel-l/timing-functions.svg?branch=master)](https://travis-ci.org/aurel-l/timing-functions)
+
 Timing functions
 =======================
 
@@ -14,7 +16,9 @@ that do not provide precise timing.
  - Keep in mind that these functions are never blocking.
 
 ## Usage
-These functions are meant to be used within async functions (es2017);
+These functions are meant to be used within async functions (es2017).
+
+They can be used inside the browser (main thread and worker) or NodeJs.
 
 ### Examples
 ```js
@@ -24,7 +28,7 @@ async function message() {
   console.log('it\' gonna be legend...');
   await sleep(200);// Waits for approximately 200ms
   console.log('...wait for it...');
-  await sleep(1000);// Waits for approximately 1s;
+  await sleep(1000);// Waits for approximately 1s
   console.log('...dary!');
 }
 message();
@@ -33,7 +37,7 @@ message();
 ## API
 
 ### `sleep`
-Waits for approximately the number of ms you provide it.
+Waits for approximately the number of ms provided.
 
 #### Parameters
 
