@@ -1,7 +1,7 @@
 // @flow
-import env from 'utils/env';
-import sleep from 'sleep';
-import frame from 'frame';
+import env from '../utils/env';
+import sleep from '../sleep';
+import frame from '../frame';
 
 let schedule;
 

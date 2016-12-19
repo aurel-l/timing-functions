@@ -1,8 +1,8 @@
 // @flow
-import _sleep from 'sleep';
-import _frame from 'frame';
-import _schedule from 'schedule';
-import _timeout from 'timeout';
+import _sleep from './sleep';
+import _frame from './frame';
+import _schedule from './schedule';
+import _timeout from './timeout';
 
 export const sleep = _sleep;
 export const frame = _frame;

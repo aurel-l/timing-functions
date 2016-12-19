@@ -8,9 +8,7 @@ export default {
   sourceMap: true,
   moduleName: 'timing-functions',
   plugins: [
-    includePaths({
-      paths: ['src'],
-    }),
+    includePaths(),
     babel({
       env: {
         production: {

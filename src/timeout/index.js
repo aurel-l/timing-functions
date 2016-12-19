@@ -1,6 +1,6 @@
 // @flow
-import required from 'utils/required';
-import sleep from 'sleep';
+import required from '../utils/required';
+import sleep from '../sleep';
 
 export default (
   timeout/* : number */ = required('timeout'),

@@ -1,6 +1,6 @@
 // @flow
-import env from 'utils/env';
-import sleep from 'sleep';
+import env from '../utils/env';
+import sleep from '../sleep';
 
 let frame = () => sleep(0);
 
