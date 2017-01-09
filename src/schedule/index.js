@@ -14,7 +14,7 @@ if (env === 'browser' && 'requestIdleCallback' in window) {
   schedule = (maxTimeout/* : ?number */) => sleep((maxTimeout || 0) / 2);
   if (sleep !== frame) {
     // But does support requestAnimationFrame
-    schedule = schedule.then(frame);
+    schedule = schedule().then(frame);
   }
 }
 
