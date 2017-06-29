@@ -12,9 +12,14 @@ if (env === 'browser' && 'requestIdleCallback' in window) {
 } else {
   // Does not support requestIdleCallback
   schedule = (maxTimeout/* : ?number */) => sleep((maxTimeout || 0) / 2);
+  // IdleDeadline stub
+  const idleDeadline = Object.freeze({
+    didTimeout: true,
+    timeRemaining () { return Infinity },
+  });
   if (sleep !== frame) {
     // But does support requestAnimationFrame
-    schedule = schedule().then(frame);
+    schedule = schedule().then(frame).then(() => idleDeadline);
   }
 }
 
