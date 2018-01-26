@@ -1,6 +1,6 @@
 {
   "name": "timing-functions",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Set of universal utility functions around timing and scheduling in JavaScript",
   "files": [
     "dist",
@@ -49,14 +49,14 @@
   "author": "Aurélien Luciani <luciani@ebi.ac.uk> (https://github.com/aurel-l)",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "4.15.0",
+    "eslint": "4.16.0",
     "eslint-config-standard": "=10.2.1",
     "eslint-import-resolver-node": "0.3.2",
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-node": "5.2.1",
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-standard": "=3.0.1",
-    "flow-bin": "0.63.1",
+    "flow-bin": "0.64.0",
     "npm-run-all": "4.1.2",
     "rimraf": "2.6.2",
     "uglifyjs-webpack-plugin": "1.1.6",
