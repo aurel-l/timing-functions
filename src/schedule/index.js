@@ -10,16 +10,19 @@ if (env === 'browser' && 'requestIdleCallback' in window) {
     resolve => window.requestIdleCallback(resolve, {timeout: maxTimeout})
   );
 } else {
-  // Does not support requestIdleCallback
-  schedule = (maxTimeout/* : ?number */) => sleep((maxTimeout || 0) / 2);
   // IdleDeadline stub
   const idleDeadline = Object.freeze({
     didTimeout: true,
     timeRemaining () { return Infinity },
   });
-  if (sleep !== frame) {
+  // Does not support requestIdleCallback
+  schedule = (maxTimeout/* : ?number */) => (
+    sleep((maxTimeout || 0) / 2).then(() => idleDeadline)
+  );
+  if (env === 'browser' && 'requestAnimationFrame' in window) {
     // But does support requestAnimationFrame
-    schedule = schedule().then(frame).then(() => idleDeadline);
+    const _schedule = schedule;
+    schedule = () => _schedule().then(frame).then(() => idleDeadline);
   }
 }
 
