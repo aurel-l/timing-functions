@@ -7,7 +7,7 @@ let schedule;
 
 if (env === 'browser' && 'requestIdleCallback' in window) {
   schedule = (maxTimeout/* : ?number */) => new Promise(
-    resolve => window.requestIdleCallback(resolve, {timeout: maxTimeout})
+    resolve => window.requestIdleCallback(resolve, { timeout: maxTimeout })
   );
 } else {
   // IdleDeadline stub
