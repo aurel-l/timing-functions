@@ -1,6 +1,6 @@
 {
   "name": "timing-functions",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Set of universal utility functions around timing and scheduling in JavaScript",
   "files": [
     "dist",
