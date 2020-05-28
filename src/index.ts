@@ -1,4 +1,3 @@
-// @flow
 import _sleep from './sleep';
 import _frame from './frame';
 import _schedule from './schedule';

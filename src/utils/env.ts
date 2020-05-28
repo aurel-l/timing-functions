@@ -1,5 +1,3 @@
-// @flow
-
 let env = 'node';
 if (typeof importScripts !== 'undefined') {
   env = 'worker';

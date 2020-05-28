@@ -10,18 +10,20 @@
     "type": "git",
     "url": "https://github.com/aurel-l/timing-functions.git"
   },
-  "module": "src/index.js",
-  "jsnext:main": "src/index.js",
-  "main": "dist/index.js",
+  "main": "dist/timing-functions.cjs.js",
+  "module": "dist/timing-functions.es.mjs",
+  "jsnext:main": "dist/timing-functions.es.mjs",
+  "types": "dist/timing-functions.d.ts",
   "scripts": {
     "clean": "rimraf dist",
     "test:unit": "echo \"no unit test yet\"",
-    "test:lint": "eslint  --ignore-path .gitignore \"./**/*.js\"",
-    "test:flow": "flow",
+    "test:lint": "eslint --ignore-path .gitignore \"./**/*.js\"",
+    "test:types": "tsc --noEmit src/index.ts",
     "test": "npm-run-all test:*",
-    "bundle": "webpack",
-    "build": "npm-run-all clean bundle",
-    "prepublishOnly": "npm-run-all test clean bundle"
+    "bundle": "rollup -c",
+    "generate-types": "tsc --emitDeclarationOnly --declaration --outFile dist/timing-functions.d.ts src/index.ts",
+    "build": "npm-run-all clean bundle generate-types",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "timing",
@@ -49,17 +51,25 @@
   "author": "Aurélien Luciani <luciani@ebi.ac.uk> (https://github.com/aurel-l)",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "5.16.0",
-    "eslint-config-standard": "12.0.0",
-    "eslint-import-resolver-node": "0.3.2",
-    "eslint-plugin-import": "2.17.3",
-    "eslint-plugin-node": "9.1.0",
-    "eslint-plugin-promise": "4.1.1",
-    "eslint-plugin-standard": "4.0.0",
-    "flow-bin": "0.101.1",
+    "@rollup/plugin-node-resolve": "8.0.0",
+    "@rollup/plugin-typescript": "4.1.2",
+    "@typescript-eslint/eslint-plugin": "3.0.2",
+    "@typescript-eslint/parser": "3.0.2",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-import-resolver-node": "^0.3.3",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "npm-run-all": "4.1.5",
-    "rimraf": "2.6.3",
-    "uglifyjs-webpack-plugin": "1.1.6",
-    "webpack": "3.10.0"
-  }
+    "prettier": "2.0.5",
+    "rimraf": "^3.0.2",
+    "rollup": "2.11.2",
+    "tslib": "2.0.0",
+    "typescript": "3.9.3"
+  },
+  "dependencies": {}
 }
