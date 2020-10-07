@@ -1,6 +1,6 @@
 import sleep from './sleep';
 
-export default (timeout: number, promise: Promise<any>, message?: string) =>
+export default (timeout: number, promise: Promise<unknown>, message?: string) =>
   Promise.race([
     promise,
     sleep(timeout).then(

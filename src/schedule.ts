@@ -12,7 +12,7 @@ type IdleCallbackHandle = number;
 declare global {
   interface Window {
     requestIdleCallback: (
-      callback: () => any,
+      callback: () => unknown,
       options?: { timeout?: number }
     ) => IdleCallbackHandle;
     cancelIdleCallback: (handle: IdleCallbackHandle) => void;
@@ -22,7 +22,7 @@ declare global {
 let schedule: (maxTimeout?: number) => Promise<IdleDeadline>;
 
 if (env === 'browser' && 'requestIdleCallback' in window) {
-  schedule = (maxTimeout?: number) =>
+  schedule = (maxTimeout?: number): Promise<IdleDeadline> =>
     new Promise((resolve) =>
       window.requestIdleCallback(resolve, { timeout: maxTimeout })
     );
@@ -35,12 +35,12 @@ if (env === 'browser' && 'requestIdleCallback' in window) {
     },
   });
   // Does not support requestIdleCallback
-  schedule = (maxTimeout?: number) =>
+  schedule = (maxTimeout?: number): Promise<IdleDeadline> =>
     sleep((maxTimeout || 0) / 2).then(() => idleDeadline);
   if (env === 'browser' && 'requestAnimationFrame' in window) {
     // But does support requestAnimationFrame
     const _schedule = schedule;
-    schedule = () =>
+    schedule = (): Promise<IdleDeadline> =>
       _schedule()
         .then(frame)
         .then(() => idleDeadline);

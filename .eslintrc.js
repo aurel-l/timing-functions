@@ -22,6 +22,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         paths: [require('path').resolve('src')],
       },
     },
